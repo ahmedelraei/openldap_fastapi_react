@@ -3,9 +3,9 @@ FROM bitnami/openldap:2.6.10
 # Switch to root user for setup
 USER root
 
-# Install ldap-utils for ldif processing
+# Install ldap-utils and dos2unix for ldif processing and line ending conversion
 RUN apt-get update && \
-    apt-get install -y ldap-utils && \
+    apt-get install -y ldap-utils dos2unix && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy LDIF files for initialization
@@ -13,7 +13,10 @@ COPY ldif/ /ldif/
 
 # Copy custom entrypoint
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Fix line endings and make executable (important for Windows development)
+RUN dos2unix /usr/local/bin/entrypoint.sh && \
+    chmod +x /usr/local/bin/entrypoint.sh
 
 # Set environment variables
 ENV LDAP_ADMIN_USERNAME=admin

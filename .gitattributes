@@ -1,0 +1,23 @@
+# Ensure shell scripts always use LF line endings
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Ensure other text files use LF on Linux/macOS and CRLF on Windows
+*.txt text
+*.md text
+*.js text
+*.jsx text
+*.py text
+*.yml text
+*.yaml text
+*.json text
+*.html text
+*.css text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
