@@ -101,24 +101,6 @@ const AdminDashboardContent = () => {
             </table>
           </div>
         </div>
-
-        <div className="admin-actions">
-          <h2>Administrative Actions</h2>
-          <div className="action-buttons">
-            <button className="action-button primary">
-              Export User Data
-            </button>
-            <button className="action-button secondary">
-              System Logs
-            </button>
-            <button className="action-button secondary">
-              LDAP Health Check
-            </button>
-            <button className="action-button warning">
-              Reset User Password
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -88,24 +88,6 @@ const UserDashboardContent = () => {
           </div>
         </div>
 
-        <div className="user-actions">
-          <h2>Quick Actions</h2>
-          <div className="action-buttons">
-            <button className="action-button primary">
-              Update Profile
-            </button>
-            <button className="action-button secondary">
-              Change Password
-            </button>
-            <button className="action-button secondary">
-              Download My Data
-            </button>
-            <button className="action-button secondary">
-              View Account Settings
-            </button>
-          </div>
-        </div>
-
         <div className="user-stats">
           <h2>Your Statistics</h2>
           <div className="stats-grid">
