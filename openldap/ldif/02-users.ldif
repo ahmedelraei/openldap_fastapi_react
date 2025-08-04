@@ -1,0 +1,32 @@
+# Create default users
+dn: uid=user1,ou=people,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: user1
+cn: User One
+sn: One
+givenName: User
+displayName: User One
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/user1
+loginShell: /bin/bash
+mail: user1@example.com
+userPassword: password123
+
+dn: uid=user2,ou=people,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: user2
+cn: User Two
+sn: Two
+givenName: User
+displayName: User Two
+uidNumber: 1002
+gidNumber: 1002
+homeDirectory: /home/user2
+loginShell: /bin/bash
+mail: user2@example.com
+userPassword: password123

@@ -1,0 +1,91 @@
+services:
+  # OpenLDAP Server
+  openldap:
+    build: ./openldap
+    container_name: openldap
+    hostname: openldap
+    ports:
+      - "389:1389"
+      - "636:1636"
+    volumes:
+      - ldap_data:/bitnami/openldap
+    environment:
+      - LDAP_ADMIN_PASSWORD=admin123
+    networks:
+      - app_network
+
+  # MongoDB
+  mongo:
+    image: mongo:7.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+      - MONGO_INITDB_DATABASE=auth_db
+    volumes:
+      - mongodb_data:/data/db
+      - ./backend/init-mongo.js:/docker-entrypoint-initdb.d/01-init-mongo.js:ro
+      - ./backend/init-mongo-users.js:/docker-entrypoint-initdb.d/02-init-mongo-users.js:ro
+    depends_on:
+      - openldap
+    networks:
+      - app_network
+
+  # FastAPI Backend
+  backend:
+    build: ./backend
+    container_name: fastapi_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - LDAP_HOST=openldap
+      - LDAP_PORT=1389
+      - LDAP_BASE_DN=dc=example,dc=com
+      - LDAP_ADMIN_DN=cn=admin,dc=example,dc=com
+      - LDAP_ADMIN_PASSWORD=admin123
+      - MONGODB_URL=mongodb://admin:admin123@mongo:27017/auth_db?authSource=admin
+      - SECRET_KEY=your-super-secret-key-change-in-production
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - DEBUG=true
+    depends_on:
+      - openldap
+      - mongo
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  # React Frontend
+  frontend:
+    build: ./frontend
+    container_name: react_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+      - DEBUG=vite:*
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.pnpm-store
+    networks:
+      - app_network
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+volumes:
+  ldap_data:
+  ldap_config:
+  mongodb_data:
+
+networks:
+  app_network:
+    driver: bridge

@@ -1,0 +1,12 @@
+# Create default groups
+dn: cn=Group_A,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+cn: Group_A
+description: Admin Group - Access to Admin Dashboard
+member: uid=user1,ou=people,dc=example,dc=com
+
+dn: cn=Group_B,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+cn: Group_B
+description: User Group - Access to User Dashboard
+member: uid=user2,ou=people,dc=example,dc=com

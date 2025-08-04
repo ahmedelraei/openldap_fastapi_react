@@ -1,0 +1,111 @@
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn/
+
+# React build
+frontend/build/
+frontend/.eslintcache
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+.docker/
+
+# Data directories (contains sensitive data)
+data/
+backups/
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+.coverage
+.nyc_output
+.coverage.*
+
+# Test results
+.pytest_cache/
+test-results/
+junit.xml
+
+# LDAP specific
+*.ldif.bak
+slapd.d/
+
+# MongoDB
+dump/
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+
+# Secrets
+secrets/
+*.secret
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
