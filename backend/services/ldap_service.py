@@ -90,8 +90,6 @@ class LDAPService(LDAPServiceAbstractClass):
             # Get next UID number
             uid_number = self._get_next_uid_number(conn)
             
-            # For LDAP compatibility, store password in plaintext or LDAP format
-            # In production, you might want to use SSHA or other LDAP-compatible formats
             password = user_data.password  # Store plaintext for LDAP authentication
             
             # Create user entry

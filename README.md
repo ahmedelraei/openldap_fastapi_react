@@ -11,13 +11,13 @@ A complete authentication system built with OpenLDAP, FastAPI, React, and MongoD
 
 ```bash
 # Clone and navigate to the project
-cd openldab_fastapi
+cd openldap_fastapi_react
 
 # Start all services
-docker-compose up -d
+docker compose up -d
 
 # Verify everything is running
-docker-compose ps
+docker compose ps
 ```
 
 That's it! The application will be available at:
