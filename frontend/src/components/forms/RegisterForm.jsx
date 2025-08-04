@@ -127,7 +127,7 @@ const RegisterForm = () => {
             />
           </div>
           
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="group">Group:</label>
             <select
               id="group"
@@ -139,7 +139,7 @@ const RegisterForm = () => {
               <option value="Group_A">Group A (Admin)</option>
               <option value="Group_B">Group B (User)</option>
             </select>
-          </div>
+          </div> */}
           
           {error && <div className="error-message">{error}</div>}
           {success && <div className="success-message">{success}</div>}
